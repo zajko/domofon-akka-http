@@ -9,7 +9,5 @@ import domofon.entities.Contact
  */
 object GetContacts {
 
-  def getContacts: List[Contact] = (query: Option[String]) => {
-
-  }
+  
 }
