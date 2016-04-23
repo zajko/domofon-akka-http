@@ -2,14 +2,17 @@ package domofon
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import akka.http.scaladsl.model._
+import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server._
 import akka.stream.Materializer
+import domofon.routes.Importants
 import domofon.routes.Categories
+import domofon.entities.{Contact, IsImportant}
+import spray.json.DefaultJsonProtocol
 
 import scala.concurrent.ExecutionContext
 
-trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives {
+trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives with DefaultJsonProtocol {
 
   implicit def system: ActorSystem
 
@@ -19,6 +22,7 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
 
   def domofonRoute: Route = {
     domofonYmlRoute ~
+      getImportantContact ~
       complete(StatusCodes.NotImplemented)
   }
 
@@ -34,9 +38,9 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
 
   def notifyContact: Route = complete(StatusCodes.NotImplemented)
 
-  def getImportantContact: Route = complete(StatusCodes.NotImplemented)
+  def getImportantContact: Route = Importants.getImportantContact
 
-  def putImportantContact: Route = complete(StatusCodes.NotImplemented)
+  def putImportantContact: Route = Importants.putImportantContact
 
   def deleteDeputy: Route = complete(StatusCodes.NotImplemented)
 
