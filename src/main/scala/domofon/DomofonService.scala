@@ -5,6 +5,7 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server._
 import akka.stream.Materializer
+import domofon.routes.Categories
 
 import scala.concurrent.ExecutionContext
 
@@ -52,5 +53,7 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
 
   def putDeputy: Route = complete(StatusCodes.NotImplemented)
 
-  def getCategories: Route = complete(StatusCodes.NotImplemented)
+  def getCategories: Route = Categories.getCategories
+
+  def postCategory: Route = Categories.postCategory
 }
