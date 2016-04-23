@@ -5,8 +5,7 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server._
 import akka.stream.Materializer
-import domofon.routes.Importants
-import domofon.routes.Categories
+import domofon.routes.{Contacts, Importants, Categories}
 import domofon.entities.{Contact, IsImportant}
 import spray.json.DefaultJsonProtocol
 
@@ -24,9 +23,10 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
     domofonYmlRoute ~
       getImportantContact ~
       getCategories
+      getContact
   }
 
-  def getContact: Route = complete(StatusCodes.NotImplemented)
+  def getContact: Route = Contacts.getContacts;
 
   def postContact: Route = complete(StatusCodes.NotImplemented)
 

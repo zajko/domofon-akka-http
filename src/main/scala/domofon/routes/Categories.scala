@@ -21,4 +21,5 @@ object Categories extends SprayJsonSupport with Directives with DefaultJsonProto
   }
 
   def postCategory: Route = complete(StatusCodes.NotImplemented)
+
 }
