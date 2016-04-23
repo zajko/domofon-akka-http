@@ -9,4 +9,5 @@ object Categories extends SprayJsonSupport with Directives {
   def getCategories: Route = complete(StatusCodes.NotImplemented)
 
   def postCategory: Route = complete(StatusCodes.NotImplemented)
+
 }
