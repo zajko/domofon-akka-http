@@ -18,7 +18,39 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
 
   def domofonRoute: Route = {
     domofonYmlRoute ~
+      getContact ~
+      postContact ~
+      getContactSSE ~
+      getContactById ~
+      deleteContactById ~
+      notifyContact ~
+      getImportantContact ~
+      putImportantContact ~
+      deleteDeputy ~
+      putDeputy ~
+      getCategories ~
       complete(StatusCodes.NotImplemented)
   }
 
+  def getContact: Route = complete(StatusCodes.NotImplemented)
+
+  def postContact: Route = complete(StatusCodes.NotImplemented)
+
+  def getContactSSE: Route = complete(StatusCodes.NotImplemented)
+
+  def getContactById: Route = complete(StatusCodes.NotImplemented)
+
+  def deleteContactById: Route = complete(StatusCodes.NotImplemented)
+
+  def notifyContact: Route = complete(StatusCodes.NotImplemented)
+
+  def getImportantContact: Route = complete(StatusCodes.NotImplemented)
+
+  def putImportantContact: Route = complete(StatusCodes.NotImplemented)
+
+  def deleteDeputy: Route = complete(StatusCodes.NotImplemented)
+
+  def putDeputy: Route = complete(StatusCodes.NotImplemented)
+
+  def getCategories: Route = complete(StatusCodes.NotImplemented)
 }
