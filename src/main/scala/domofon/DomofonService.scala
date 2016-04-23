@@ -20,10 +20,10 @@ trait DomofonService extends SwaggerRoute with SprayJsonSupport with Directives 
 
   implicit def executionContext: ExecutionContext = system.dispatcher
 
-  def domofonRoute: Route = {
+  def domofonRoute: Route = Route.seal {
     domofonYmlRoute ~
       getImportantContact ~
-      complete(StatusCodes.NotImplemented)
+      getCategories
   }
 
   def getContact: Route = complete(StatusCodes.NotImplemented)

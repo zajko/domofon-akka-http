@@ -5,20 +5,20 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server._
 import domofon.DB
 import domofon.entities.{CategoryMessage, CategoryResponse}
-import spray.json.DefaultJsonProtocol
+import spray.json.{DefaultJsonProtocol, _}
 
 object Categories extends SprayJsonSupport with Directives with DefaultJsonProtocol {
-  implicit val categoryResponseFormat = jsonFormat6(CategoryResponse.apply)
-  implicit val messageFormat = jsonFormat2(CategoryMessage.apply)
+  private implicit val messageFormat = jsonFormat2(CategoryMessage.apply)
+  private implicit val categoryResponseFormat = jsonFormat6(CategoryResponse.apply)
 
   def getCategories: Route = path("categories") {
     get {
+      val categoriesResponses = DB.categories.values.toList
       complete {
-        val categories = DB.categories.values.toSeq
-
-        "foo"
+        categoriesResponses.toJson
       }
     }
   }
+
   def postCategory: Route = complete(StatusCodes.NotImplemented)
 }
